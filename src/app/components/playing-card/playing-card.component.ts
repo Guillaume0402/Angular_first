@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, input, InputSignal } from '@angular/core';
+import { Monster } from '../../models/monster.model';
 
 @Component({
   selector: 'app-playing-card',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
   templateUrl: './playing-card.component.html',
   styleUrl: './playing-card.component.css',
 })
-export class PlayingCardComponent {}
+export class PlayingCardComponent {
+  monster: InputSignal<Monster> = input(new Monster(), {
+    alias: 'my-monster',
+    transform: (value: Monster) => {
+      value.hp = value.hp / 2;
+      return value;
+    },
+  });
+}
