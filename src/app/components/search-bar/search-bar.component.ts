@@ -24,4 +24,7 @@ export class SearchBarComponent {
   searchClick() {
     this.searchButtonClicked.emit();
   }
+  updateSearch(value: string) {
+    this.search.set(value);
+  }
 }
